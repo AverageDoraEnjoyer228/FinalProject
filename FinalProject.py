@@ -3,8 +3,6 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib
-import seaborn as sns
-import re
 
 import requests
 from bs4 import BeautifulSoup
