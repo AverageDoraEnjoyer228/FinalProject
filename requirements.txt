@@ -2,8 +2,6 @@ streamlit
 pandas
 numpy
 matplotlib
-seaborn
-re
 
 requests
 bs4
