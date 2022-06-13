@@ -30,7 +30,7 @@ with st.echo(code_location='below'):
             по какой научной области написана статья.\n
             Исходный датасет на 1.7М+ статей взят с
             https://www.kaggle.com/datasets/Cornell-University/arxiv?select=arxiv-metadata-oai-snapshot.json,
-            который в процессе прилично обработан и урезан. Работу с датасетом,
+            который в процессе был прилично обработан и урезан. Работу с датасетом,
             а также обучение самой модели (за основу взята модель типа трансформер)
             можно посмотреть в ipynb-файле, приложенном вместе с ссылкой на данную страницу.
         """)
@@ -110,7 +110,6 @@ with st.echo(code_location='below'):
         return tokenizer, model
 
 
-    @st.cache(suppress_st_warning=True, hash_funcs={tokenizers.Tokenizer: lambda _: None})
     def predict(title, summary, tokenizer, model):
         text = title + "\n" + summary
         tokens = tokenizer.encode(text)
@@ -132,7 +131,6 @@ with st.echo(code_location='below'):
         return prediction, prediction_probs
 
 
-    @st.cache(suppress_st_warning=True)
     def get_results(prediction, prediction_probs):
         frame = pd.DataFrame({'Category': prediction, 'Confidence': prediction_probs})
         frame.index = np.arange(1, len(frame) + 1)
